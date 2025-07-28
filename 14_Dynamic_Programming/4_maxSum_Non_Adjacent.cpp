@@ -54,7 +54,7 @@ int maximumNonAdjacentSum(vector<int> &nums){
     // dp[0] = nums[0];
     // for(int ind = 1; ind<n; ind++){
     //     int take = nums[ind];
-    //     if(ind>1) take += dp[ind-2];  //(base case)this is because if(i<=1) then dp[ind-2] will be out of bound
+    //     if(ind>1) take += dp[ind-2];  //(base case)this is because if(i<=1) then dp[ind-2] will be out of bound (we have deal with this base case seperately bcs the base case was ind<0 so we can't direclty apply it)
     //     int ntake = dp[ind-1];
     //     dp[ind] = max(take,ntake);
     // }
