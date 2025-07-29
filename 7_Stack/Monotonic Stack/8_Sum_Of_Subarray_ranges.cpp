@@ -5,8 +5,6 @@ Return the sum of all subarray ranges of nums.
 
 A subarray is a contiguous non-empty sequence of elements within an array.
 
- 
-
 Example 1:
 
 Input: nums = [1,2,3]

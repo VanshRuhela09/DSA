@@ -14,7 +14,6 @@ Example 2:
 Input: matrix = [["0"]]
 Output: 0
 Example 3:
-
 Input: matrix = [["1"]]
 Output: 1
 */
