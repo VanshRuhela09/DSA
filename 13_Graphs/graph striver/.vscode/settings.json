@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "algorithm": "cpp",
-        "compare": "cpp"
+        "compare": "cpp",
+        "unordered_map": "cpp",
+        "utility": "cpp"
     }
 }
