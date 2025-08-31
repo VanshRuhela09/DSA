@@ -23,6 +23,7 @@ class Solution {
             if(arr[0]==sum){
                 return true;
             }
+            
             return false;
         }
         if(dp[ind][sum]!=-1){
