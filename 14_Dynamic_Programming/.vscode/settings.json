@@ -5,6 +5,8 @@
         "utility": "cpp",
         "xstring": "cpp",
         "xutility": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp"
     }
 }
