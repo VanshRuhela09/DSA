@@ -101,34 +101,38 @@ int lengthOfLIS(vector<int>& nums) {
 //memoization + tabulation
 class Solution {
 public:
-    int find(int ind , int prev , vector<int>& nums ,  vector<vector<int>> &dp){
-        if(ind==nums.size()) return 0;
-        if(dp[ind][prev+1]!=-1){
-            return dp[ind][prev+1];
+    int find(int ind , int prev , int n , vector<int> &nums , vector<vector<int>> &dp){
+        if(ind == n) return 0;
+
+        if(dp[ind][prev+1] != -1) return dp[ind][prev+1];
+
+        int ntake = find(ind+1 , prev , n , nums, dp);
+
+        int take = -1e8;
+        if(prev == -1 || nums[ind] > nums[prev]){
+            take = 1 + find(ind+1,ind , n , nums,dp);
         }
-        int ntake = find(ind+1,prev,nums,dp);
-        int take = INT_MIN;
-        if(prev==-1 || nums[ind]>nums[prev]){
-            take = 1 + find(ind+1,ind,nums,dp);
-        }
-        return dp[ind][prev+1] = max(ntake , take);
+        return dp[ind][prev+1] = max(take,ntake);
+
     }
     int lengthOfLIS(vector<int>& nums) {
-        if(nums.size()==1) return 1;
-        // vector<vector<int>> dp(nums.size(),vector<int>(nums.size(),0)); dp array for memoization.
-        vector<vector<int>> dp(nums.size()+1,vector<int>(nums.size()+1,0)); // this is for tabulation
-        
-        for(int ind = nums.size()-1; ind>=0; ind--){
-            for(int prev = ind-1; prev>=-1; prev--){
+        int n = nums.size();
+
+        // vector<vector<int>> dp(n,vector<int>(n,-1));
+        // return find(0,-1,n,nums,dp);
+
+        vector<vector<int>> dp(n+1,vector<int>(n+1,0));
+
+        for(int ind = n-1; ind>=0; ind--){
+            for(int prev = n-1; prev>=-1; prev--){
                 int ntake = dp[ind+1][prev+1];
-                int take = INT_MIN;
-                if(prev==-1 || nums[ind]>nums[prev]){
+                int take = -1e8;
+                if(prev == -1 || nums[ind] > nums[prev]){
                     take = 1 + dp[ind+1][ind+1];
                 }
-                dp[ind][prev+1] = max(ntake , take);
+                dp[ind][prev+1] = max(take,ntake);
             }
         }
-        // return find(0,-1,nums,dp);
         return dp[0][-1+1];
     }
 };

@@ -35,7 +35,7 @@ public:
             return false;
         }
         while(p1 < s1.length()){
-            if(s1[p1] == s2[p2]){
+            if(s1[p1] == s2[p2]){ //it will not go out of bound as s1 is always greater than s2
                 p1++;
                 p2++;
             }
