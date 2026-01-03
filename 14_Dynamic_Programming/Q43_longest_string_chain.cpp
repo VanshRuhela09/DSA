@@ -34,7 +34,7 @@ public:
         if(s1.length() != s2.length() + 1){
             return false;
         }
-        while(p1 < s1.length()){
+        while(p2 < s2.length() && p1 < s1.length()){
             if(s1[p1] == s2[p2]){ //it will not go out of bound as s1 is always greater than s2
                 p1++;
                 p2++;

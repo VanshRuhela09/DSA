@@ -60,7 +60,7 @@ int matrixMultiplication(vector<int> &arr, int N){
     vector<vector<int>> dp(N, vector<int>(N, 0));
 
     for(int i = N-1; i>=0; i--){
-        for(int j = i+1; j<N; j++){
+        for(int j = i+1; j<N; j++){ // here we started j from i + 1 bcs j can't be lesser than i 
             int mini = INT_MAX;
             for(int k = i; k < j; k++){
                 int steps = arr[i-1] * arr[k] * arr[j] + dp[i][k] + dp[k+1][j];

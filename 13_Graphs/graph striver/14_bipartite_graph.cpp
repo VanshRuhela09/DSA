@@ -21,6 +21,49 @@ Input: graph = [[1,3],[0,2],[1,3],[0,2]]
 Output: true
 Explanation: We can partition the nodes into two sets: {0, 2} and {1, 3}.
 */
+
+#include <bits/stdc++.h>
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        vector<int> vis(graph.size(), 0);
+        queue<int> q;
+        int fl = 0;
+        for (int i = 0; i < graph.size(); i++) {
+            if (!vis[i]) {
+                q.push(i);
+                vis[i] = 1;
+            }
+                while (!q.empty()) {
+                    int i = q.front();
+                    q.pop();
+                    for (auto it : graph[i]) {
+                           if(!vis[it])
+                           {
+                            if(vis[i]==1)
+                            {
+                                vis[it]=2;
+                            }
+                            else
+                            {
+                                vis[it]=1;
+                            }
+                            q.push(it);
+                           }
+                           else
+                           {
+                            if(vis[it]==vis[i])
+                            {
+                                return false;
+                            }
+                           }
+                    }
+                }
+        }
+        return true;
+    }
+};
+
 class Solution {
 public:
     bool isBipartite(vector<vector<int>>& graph) {
